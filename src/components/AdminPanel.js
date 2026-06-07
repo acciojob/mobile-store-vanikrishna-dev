@@ -66,11 +66,15 @@ function AdminPanel({ products, setProducts }) {
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginTop: "6px" }}>
             <input className="form-control" value={editProduct.price} onChange={(e) => setEditProduct({ ...editProduct, price: e.target.value })}
               style={{ width: "200px", padding: "8px", border: "1px solid #aaa", borderRadius: "4px" }} />
-            <button onClick={() => navigate("/admin")} className="float-right"
+            <button
+              onClick={() => navigate("/admin")}
+              data-testid="edit-view-delete"
               style={{ padding: "8px 16px", background: "#888", color: "#fff", border: "none", cursor: "pointer", borderRadius: "4px" }}>
               Delete
             </button>
-            <button onClick={handleSave} className="float-right"
+            <button
+              onClick={handleSave}
+              data-testid="edit-view-save"
               style={{ padding: "8px 16px", background: "#555", color: "#fff", border: "none", cursor: "pointer", borderRadius: "4px" }}>
               Save
             </button>
