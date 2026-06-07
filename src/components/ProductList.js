@@ -11,7 +11,7 @@ function ProductList({ products }) {
             <p style={{ color: "#1a73e8", fontWeight: "500", marginBottom: "8px" }}>{product.name}</p>
             <p style={{ marginBottom: "8px" }}>Price: {product.price}</p>
             <Link to={`/products/${product.id}`}>
-              <button style={{ padding: "4px 16px", background: "#888", color: "#fff", border: "none", cursor: "pointer", borderRadius: "2px" }}>Buy</button>
+              <button data-testid={`buy-${product.id}`} style={{ padding: "4px 16px", background: "#888", color: "#fff", border: "none", cursor: "pointer", borderRadius: "2px" }}>Buy</button>
             </Link>
           </div>
         </div>

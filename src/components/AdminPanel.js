@@ -114,11 +114,17 @@ function AdminPanel({ products, setProducts }) {
             </div>
           </div>
           <div style={{ display: "flex", gap: "8px" }}>
-            <button onClick={() => navigate(`/admin/products/${product.id}`)} className="float-right"
+            <button
+              onClick={() => navigate(`/admin/products/${product.id}`)}
+              className="edit-btn"
+              data-testid={`edit-${product.id}`}
               style={{ padding: "6px 14px", background: "#555", color: "#fff", border: "none", cursor: "pointer", borderRadius: "4px" }}>
               Edit
             </button>
-            <button onClick={() => handleDelete(product.id)} className="float-right"
+            <button
+              onClick={() => handleDelete(product.id)}
+              className="delete-btn"
+              data-testid={`delete-${product.id}`}
               style={{ padding: "6px 14px", background: "#888", color: "#fff", border: "none", cursor: "pointer", borderRadius: "4px" }}>
               Delete
             </button>
