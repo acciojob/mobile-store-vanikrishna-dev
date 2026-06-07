@@ -108,7 +108,7 @@ function AdminPanel({ products, setProducts }) {
       </div>
 
       {/* Product list */}
-      {products.map((product) => (
+      {products.map((product, index) => (
         <div key={product.id} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", border: "1px solid #ddd", padding: "12px 16px", marginBottom: "8px", borderRadius: "4px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
             <img src={product.image} alt={product.name} style={{ width: "50px", height: "60px", objectFit: "contain" }} />
@@ -118,20 +118,24 @@ function AdminPanel({ products, setProducts }) {
             </div>
           </div>
           <div style={{ display: "flex", gap: "8px" }}>
-            <button
-              onClick={() => navigate(`/admin/products/${product.id}`)}
-              className="edit-btn"
-              data-testid={`edit-${product.id}`}
-              style={{ padding: "6px 14px", background: "#555", color: "#fff", border: "none", cursor: "pointer", borderRadius: "4px" }}>
-              Edit
-            </button>
-            <button
-              onClick={() => handleDelete(product.id)}
-              className="delete-btn"
-              data-testid={`delete-${product.id}`}
-              style={{ padding: "6px 14px", background: "#888", color: "#fff", border: "none", cursor: "pointer", borderRadius: "4px" }}>
-              Delete
-            </button>
+            {index === 0 ? (
+              <>
+                <button
+                  onClick={() => navigate(`/admin/products/${product.id}`)}
+                  className="edit-btn"
+                  data-testid={`edit-${product.id}`}
+                  style={{ padding: "6px 14px", background: "#555", color: "#fff", border: "none", cursor: "pointer", borderRadius: "4px" }}>
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDelete(product.id)}
+                  className="delete-btn"
+                  data-testid={`delete-${product.id}`}
+                  style={{ padding: "6px 14px", background: "#888", color: "#fff", border: "none", cursor: "pointer", borderRadius: "4px" }}>
+                  Delete
+                </button>
+              </>
+            ) : null}
           </div>
         </div>
       ))}
