@@ -66,15 +66,11 @@ function AdminPanel({ products, setProducts }) {
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginTop: "6px" }}>
             <input className="form-control" value={editProduct.price} onChange={(e) => setEditProduct({ ...editProduct, price: e.target.value })}
               style={{ width: "200px", padding: "8px", border: "1px solid #aaa", borderRadius: "4px" }} />
-            <button
-              onClick={() => navigate("/admin")}
-              data-testid="edit-view-delete"
+            <button onClick={() => navigate("/admin")} className="float-right"
               style={{ padding: "8px 16px", background: "#888", color: "#fff", border: "none", cursor: "pointer", borderRadius: "4px" }}>
               Delete
             </button>
-            <button
-              onClick={handleSave}
-              data-testid="edit-view-save"
+            <button onClick={handleSave} className="float-right"
               style={{ padding: "8px 16px", background: "#555", color: "#fff", border: "none", cursor: "pointer", borderRadius: "4px" }}>
               Save
             </button>
@@ -122,20 +118,23 @@ function AdminPanel({ products, setProducts }) {
               <>
                 <button
                   onClick={() => navigate(`/admin/products/${product.id}`)}
-                  className="edit-btn"
-                  data-testid={`edit-${product.id}`}
+                  className="float-right"
                   style={{ padding: "6px 14px", background: "#555", color: "#fff", border: "none", cursor: "pointer", borderRadius: "4px" }}>
                   Edit
                 </button>
                 <button
                   onClick={() => handleDelete(product.id)}
-                  className="delete-btn"
-                  data-testid={`delete-${product.id}`}
+                  className="float-right"
                   style={{ padding: "6px 14px", background: "#888", color: "#fff", border: "none", cursor: "pointer", borderRadius: "4px" }}>
                   Delete
                 </button>
               </>
-            ) : null}
+            ) : (
+              <>
+                {/* keep space so layout doesn't shift when buttons hidden */}
+                <div style={{ width: 0 }} />
+              </>
+            )}
           </div>
         </div>
       ))}
